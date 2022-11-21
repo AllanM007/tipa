@@ -46,12 +46,28 @@ router.get("/upload", function (req, res) {
   res.render("upload.ejs");
 });
 
+router.get("/submit-docs", function (req, res) {
+  res.render("submit-docs.ejs");
+});
+
+router.get("/view-docs", function (req, res) {
+  res.render("view-docs.ejs");
+});
+
 router.get("/submit-audit", function (req, res) {
   res.render("submit-audit.ejs");
 });
 
+router.get("/deposit", function (req, res) {
+  res.render("deposit.ejs");
+});
+
 router.get("/withdraw", function (req, res) {
   res.render("withdraw.ejs");
+});
+
+router.get("/pools", function (req, res) {
+  res.render("pools.ejs");
 });
 
 router.get("/manifest", function (req, res) {
@@ -77,7 +93,9 @@ app.listen(process.env.port || 5000);
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/service-worker.js", express.static(__dirname + "/service-worker.js"));
 app.use("/manifest.json", express.static(__dirname + "/manifest.json"));
-app.use(function (req, res, next) {
-  res.status(404).render("not-found");
-});
+app.use("/public/css", express.static(__dirname + "/public/css"));
+app.use("/public/js", express.static(__dirname + "/public/js"));
+// app.use(function (req, res, next) {
+//   res.status(404).render("not-found");
+// });
 console.log("Running at Port 5000");
